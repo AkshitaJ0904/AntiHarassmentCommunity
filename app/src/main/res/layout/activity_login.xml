@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3B5DDD"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="@drawable/rounded_light_background"
+            android:layout_margin="16dp"
+            android:padding="24dp">
+
+            <ImageView
+                android:id="@+id/ivGroupImage"
+                android:layout_width="307dp"
+                android:layout_height="218dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/login_group_image" />
+
+            <TextView
+                android:id="@+id/tvHiThere"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hi There"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_below="@id/ivGroupImage"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/tvGetStarted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Let's Get Started"
+                android:textColor="#3B5DDD"
+                android:textSize="20sp"
+                android:layout_below="@id/tvHiThere"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:layout_below="@id/tvGetStarted"
+                android:layout_marginTop="30dp"
+                android:drawablePadding="8dp" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:layout_below="@id/etUsername"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="8dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnCreateAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create an account"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/rounded_button_dark"
+                android:backgroundTint="@null"
+                android:layout_below="@id/etPassword"
+                android:layout_marginTop="30dp" />
+
+            <TextView
+                android:id="@+id/tvOr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="or"
+                android:textColor="#777777"
+                android:layout_below="@id/btnCreateAccount"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Log In"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/rounded_button_dark"
+                android:backgroundTint="@null"
+                android:layout_below="@id/tvOr" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

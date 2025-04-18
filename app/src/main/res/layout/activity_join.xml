@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3B5DDD"
+    tools:context=".JoinActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:layout_weight="3"
+            android:background="@drawable/rounded_light_background">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:text="Together, We"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/titleUnderline"
+                android:layout_width="160dp"
+                android:layout_height="2dp"
+                android:layout_below="@id/tvTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:background="#3B5DDD" />
+
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleUnderline"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="Make a Difference"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvHashtag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvSubtitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="#AntiSoch"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnJoinIn"
+                android:layout_width="137dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvHashtag"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_button_dark"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:backgroundTint="@null"
+                android:text="Join In"
+                android:textColor="#FFFFFF" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="373dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="-65dp"
+                android:src="@drawable/join_group_image" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

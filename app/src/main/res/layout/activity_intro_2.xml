@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9370DB"
+    android:background="#44d43b"
     tools:context=".IntroActivity">
 
     <!-- Purple background with rounded corners that contains the main content -->
@@ -13,24 +13,25 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_light_purple_background">
+        android:background="@drawable/rounded_light_green_background">
 
         <!-- Main title text -->
+
+        <!-- Bullet points -->
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="222dp"
             android:layout_height="216dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="111dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="132dp"
             android:lineSpacingExtra="8dp"
-            android:text="Creating a\nSafer\nSpace for\nEveryone"
-            android:textColor="#FFFFFF"
+            android:text="Fun Games,\nSafe Lesson!"
+            android:textColor="#000000"
             android:textSize="36sp"
             android:textStyle="bold" />
 
-        <!-- Bullet points -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="•"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="24sp" />
 
             <TextView
@@ -52,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="•"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="24sp" />
 
             <TextView
@@ -60,21 +61,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="•"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="24sp" />
         </LinearLayout>
 
         <!-- Character Image - positioned to overlap with the bottom right -->
-        <ImageView
-            android:layout_width="304dp"
-            android:layout_height="473dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:scaleType="fitEnd"
-            android:src="@drawable/intro_character" />
 
         <!-- Next button -->
-        <Button
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="-73dp"
+            android:layout_marginBottom="34dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/intro_character_2" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -82,14 +87,16 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="40dp"
             android:layout_marginBottom="32dp"
-            android:background="@drawable/rounded_purple_button"
+            android:background="@drawable/rounded_green_button"
+            android:backgroundTint="@null"
             android:paddingStart="32dp"
             android:paddingTop="12dp"
             android:paddingEnd="32dp"
             android:paddingBottom="12dp"
             android:text="Next"
             android:textAllCaps="false"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="18sp" />
+
     </RelativeLayout>
 </RelativeLayout>

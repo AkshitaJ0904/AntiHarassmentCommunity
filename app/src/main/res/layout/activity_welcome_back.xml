@@ -15,9 +15,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="16dp"
             android:layout_weight="3"
             android:background="@drawable/rounded_light_purple_background"
-            android:layout_margin="16dp"
             android:padding="24dp">
 
             <ImageView
@@ -25,85 +25,84 @@
                 android:layout_width="307dp"
                 android:layout_height="194dp"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="22dp"
                 android:src="@drawable/welcome_group_image" />
 
             <TextView
                 android:id="@+id/tvWelcomeBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/ivGroupImage"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
                 android:text="Welcome Back"
                 android:textColor="#000000"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_below="@id/ivGroupImage"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvLogIn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Log In"
-                android:textColor="#000000"
-                android:textSize="20sp"
                 android:layout_below="@id/tvWelcomeBack"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:text="Log In"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/etUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Username"
-                android:background="@drawable/edit_text_background"
-                android:padding="12dp"
                 android:layout_below="@id/tvLogIn"
                 android:layout_marginTop="30dp"
-                android:drawablePadding="8dp" />
+                android:background="@drawable/edit_text_background"
+                android:drawablePadding="8dp"
+                android:hint="Username"
+                android:padding="12dp" />
 
             <EditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:background="@drawable/edit_text_background"
-                android:padding="12dp"
                 android:layout_below="@id/etUsername"
                 android:layout_marginTop="16dp"
-                android:drawablePadding="8dp" />
+                android:background="@drawable/edit_text_background"
+                android:drawablePadding="8dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="12dp" />
 
             <Button
                 android:id="@+id/btnContinue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Continue >"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/rounded_button_purple"
                 android:layout_below="@id/etPassword"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_button_purple"
+                android:text="Continue >"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/tvOr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="or"
-                android:textColor="#777777"
                 android:layout_below="@id/btnContinue"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="8dp"
+                android:text="or"
+                android:textColor="#777777" />
 
             <Button
                 android:id="@+id/btnCreateAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Create an account"
-                android:textColor="#FFFFFF"
+                android:layout_below="@id/tvOr"
                 android:background="@drawable/rounded_button_purple"
-                android:layout_below="@id/tvOr" />
+                android:text="Create an account"
+                android:textColor="#FFFFFF" />
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

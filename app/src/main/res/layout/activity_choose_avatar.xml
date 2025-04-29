@@ -50,7 +50,8 @@
                         android:id="@+id/ivMaleAvatar"
                         android:layout_width="113dp"
                         android:layout_height="146dp"
-                        android:src="@drawable/male_avatar" />
+                        android:src="@drawable/male_avatar"
+                        android:contentDescription="Male Avatar" />
 
                     <TextView
                         android:layout_width="59dp"
@@ -72,7 +73,8 @@
                         android:id="@+id/ivFemaleAvatar"
                         android:layout_width="142dp"
                         android:layout_height="144dp"
-                        android:src="@drawable/female_avatar" />
+                        android:src="@drawable/female_avatar"
+                        android:contentDescription="Female Avatar" />
 
                     <TextView
                         android:layout_width="69dp"
@@ -96,7 +98,8 @@
                     android:id="@+id/ivChildAvatar"
                     android:layout_width="131dp"
                     android:layout_height="117dp"
-                    android:src="@drawable/child_avatar" />
+                    android:src="@drawable/child_avatar"
+                    android:contentDescription="Child Avatar" />
 
                 <TextView
                     android:layout_width="94dp"

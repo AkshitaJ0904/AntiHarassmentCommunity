@@ -27,7 +27,7 @@
             android:layout_marginStart="19dp"
             android:layout_marginTop="132dp"
             android:lineSpacingExtra="8dp"
-            android:text="Fun Games,\nSafe Lesson!"
+            android:text="Your Voice\nMatters.\nWe Listen!"
             android:textColor="#000000"
             android:textSize="36sp"
             android:textStyle="bold" />
@@ -70,12 +70,12 @@
         <!-- Next button -->
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="461dp"
+            android:layout_height="710dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="-73dp"
-            android:layout_marginBottom="34dp"
+            android:layout_marginEnd="-116dp"
+            android:layout_marginBottom="-2dp"
             android:scaleType="fitEnd"
             android:src="@drawable/intro_character_3" />
 

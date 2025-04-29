@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "915553984678",
+    "project_id": "antisoch-97e47",
+    "storage_bucket": "antisoch-97e47.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915553984678:android:86d918646510c0ade21467",
+        "android_client_info": {
+          "package_name": "com.example.antisoch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLGBk_BOZG4_7pShWtJZ3i4_8DMZoLYEI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

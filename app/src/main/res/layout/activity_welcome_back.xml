@@ -81,7 +81,7 @@
                 android:layout_below="@id/etPassword"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/rounded_button_purple"
-                android:text="Continue >"
+                android:text="Continue"
                 android:textColor="#FFFFFF" />
 
             <TextView
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvOr"
                 android:background="@drawable/rounded_button_purple"
-                android:text="Create an account"
+                android:text="Sign Up"
                 android:textColor="#FFFFFF" />
         </RelativeLayout>
     </LinearLayout>

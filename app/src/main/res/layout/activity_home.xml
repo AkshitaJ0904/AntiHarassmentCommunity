@@ -108,6 +108,7 @@
 
                 <!-- Community Card -->
                 <RelativeLayout
+                    android:id="@+id/communityCard"
                     android:layout_width="0dp"
                     android:layout_height="100dp"
                     android:layout_columnWeight="1"
@@ -140,6 +141,7 @@
 
                 <!-- Anti-Soch Game Card -->
                 <RelativeLayout
+                    android:id="@+id/gameCard"
                     android:layout_width="0dp"
                     android:layout_height="100dp"
                     android:layout_columnWeight="1"
@@ -172,6 +174,7 @@
 
                 <!-- Seeking Help Card -->
                 <RelativeLayout
+                    android:id="@+id/helpCard"
                     android:layout_width="0dp"
                     android:layout_height="100dp"
                     android:layout_columnWeight="1"
@@ -204,6 +207,7 @@
 
                 <!-- Dashboard/Profile Card -->
                 <RelativeLayout
+                    android:id="@+id/dashboardCard"
                     android:layout_width="0dp"
                     android:layout_height="100dp"
                     android:layout_columnWeight="1"

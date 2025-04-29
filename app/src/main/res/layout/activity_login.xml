@@ -23,7 +23,7 @@
             <ImageView
                 android:id="@+id/ivGroupImage"
                 android:layout_width="307dp"
-                android:layout_height="218dp"
+                android:layout_height="216dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="0dp"

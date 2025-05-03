@@ -3,4 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="ic_launcher_background">#FFFFFF</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <!-- Button colors -->
+    <color name="btn_chat">#F7F6F6</color>
+    <color name="btn_general">#9FB4FF</color>
+    <color name="btn_community">#FFD36E</color>
 </resources>

@@ -14,12 +14,14 @@ public class HelpScreenActivity extends AppCompatActivity {
 
     private Button btnChat;
     private Button btnGeneral;
-    private Button btnChatPlus;
-    private Button btnChatAI;
-    private TextView helpScreenTitle;
-    private CardView complaintCardView, communityCardView, safetyCardView;
-    private TextView complaintAnswer, communityAnswer, safetyAnswer;
-    private ImageView complaintArrow, communityArrow, safetyArrow;
+    private Button btnCommunity;
+    private CardView btnChatAI;
+    private ImageView btnBack;
+    
+    // FAQ items
+    private CardView faqItem1, faqItem2, faqItem3;
+    private TextView faqContent1;
+    private ImageView faqArrow1, faqArrow2, faqArrow3;
     private boolean isComplaintExpanded = true; // Initially expanded as per screenshot
     private boolean isCommunityExpanded = false;
     private boolean isSafetyExpanded = false;
@@ -29,41 +31,34 @@ public class HelpScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_screen);
 
-        // Initialize buttons and title
+        // Initialize buttons
         btnChat = findViewById(R.id.btnChat);
         btnGeneral = findViewById(R.id.btnGeneral);
-        btnChatPlus = findViewById(R.id.btnChatPlus);
+        btnCommunity = findViewById(R.id.btnCommunity);
         btnChatAI = findViewById(R.id.btnChatAI);
-        helpScreenTitle = findViewById(R.id.helpScreenTitle);
+        btnBack = findViewById(R.id.btnBack);
 
-        // Hide the title
-        helpScreenTitle.setVisibility(View.GONE);
+        // Find the FAQ items
+        faqItem1 = findViewById(R.id.faqItem1);
+        faqItem2 = findViewById(R.id.faqItem2);
+        faqItem3 = findViewById(R.id.faqItem3);
 
-        // Find the card views and their components
-        complaintCardView = findViewById(R.id.complaintCardView);
-        communityCardView = findViewById(R.id.communityCardView);
-        safetyCardView = findViewById(R.id.safetyCardView);
-
-        complaintAnswer = findViewById(R.id.complaintAnswer);
-        communityAnswer = findViewById(R.id.communityAnswer);
-        safetyAnswer = findViewById(R.id.safetyAnswer);
-
-        complaintArrow = findViewById(R.id.complaintArrow);
-        communityArrow = findViewById(R.id.communityArrow);
-        safetyArrow = findViewById(R.id.safetyArrow);
+        faqContent1 = findViewById(R.id.faqContent1);
+        
+        faqArrow1 = findViewById(R.id.faqArrow1);
+        faqArrow2 = findViewById(R.id.faqArrow2);
+        faqArrow3 = findViewById(R.id.faqArrow3);
 
         // Set initial state
-        complaintAnswer.setVisibility(View.VISIBLE); // This one is initially visible
-        communityAnswer.setVisibility(View.GONE);
-        safetyAnswer.setVisibility(View.GONE);
+        // Initial state already set in the XML (first FAQ is expanded)
 
-        // Set initial rotation of arrows
-        complaintArrow.setRotation(isComplaintExpanded ? 180 : 0);
-        communityArrow.setRotation(isCommunityExpanded ? 180 : 0);
-        safetyArrow.setRotation(isSafetyExpanded ? 180 : 0);
-
-        // Set click listeners for the card views
-        setCardViewClickListeners();
+        // Set back button click listener
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         // Set click listener for Chat button
         btnChat.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +79,7 @@ public class HelpScreenActivity extends AppCompatActivity {
         });
 
         // Set click listener for Community button
-        btnChatPlus.setOnClickListener(new View.OnClickListener() {
+        btnCommunity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Handle Community button click
@@ -100,36 +95,39 @@ public class HelpScreenActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        
+        // Set up FAQ item click listeners
+        setFaqClickListeners();
     }
 
-    private void setCardViewClickListeners() {
-        // Complaint Card
-        complaintCardView.setOnClickListener(new View.OnClickListener() {
+    private void setFaqClickListeners() {
+        // FAQ Item 1
+        faqItem1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 isComplaintExpanded = !isComplaintExpanded;
-                complaintAnswer.setVisibility(isComplaintExpanded ? View.VISIBLE : View.GONE);
-                complaintArrow.setRotation(isComplaintExpanded ? 180 : 0);
+                faqContent1.setVisibility(isComplaintExpanded ? View.VISIBLE : View.GONE);
+                faqArrow1.setRotation(isComplaintExpanded ? 180 : 0);
             }
         });
 
-        // Community Card
-        communityCardView.setOnClickListener(new View.OnClickListener() {
+        // FAQ Item 2
+        faqItem2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 isCommunityExpanded = !isCommunityExpanded;
-                communityAnswer.setVisibility(isCommunityExpanded ? View.VISIBLE : View.GONE);
-                communityArrow.setRotation(isCommunityExpanded ? 180 : 0);
+                // Note: Content for this FAQ might need to be added to the XML
+                faqArrow2.setRotation(isCommunityExpanded ? 180 : 0);
             }
         });
 
-        // Safety Device Card
-        safetyCardView.setOnClickListener(new View.OnClickListener() {
+        // FAQ Item 3
+        faqItem3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 isSafetyExpanded = !isSafetyExpanded;
-                safetyAnswer.setVisibility(isSafetyExpanded ? View.VISIBLE : View.GONE);
-                safetyArrow.setRotation(isSafetyExpanded ? 180 : 0);
+                // Note: Content for this FAQ might need to be added to the XML
+                faqArrow3.setRotation(isSafetyExpanded ? 180 : 0);
             }
         });
     }

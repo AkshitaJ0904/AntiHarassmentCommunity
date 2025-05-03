@@ -6,361 +6,375 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <!-- Keeping the title but with visibility gone as per your Java code -->
+    <!-- Header section with back button and title -->
+    <RelativeLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/btnBack"
+            android:text="Help Center"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- People illustration image -->
+    <ImageView
+        android:id="@+id/bannerImage"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_corner_bg"
+        android:scaleType="centerCrop"
+        android:src="@drawable/community_group"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout" />
+
+    <!-- Tab buttons layout -->
+    <LinearLayout
+        android:id="@+id/tabsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/bannerImage">
+
+        <Button
+            android:id="@+id/btnChat"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_tab_unselected"
+            android:stateListAnimator="@null"
+            android:text="Chat"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/btnGeneral"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_tab_selected"
+            android:stateListAnimator="@null"
+            android:text="General"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btnCommunity"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_tab_unselected"
+            android:stateListAnimator="@null"
+            android:text="Community"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <!-- Search section -->
     <TextView
-        android:id="@+id/helpScreenTitle"
+        android:id="@+id/searchTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Help screen"
-        android:textColor="#8C8C8C"
-        android:textSize="20sp"
-        android:visibility="gone"
+        android:layout_marginTop="24dp"
+        android:text="Search Here"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tabsLayout" />
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchBarContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="2dp"
+        app:layout_constraintTop_toBottomOf="@id/searchTitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_search" />
+
+            <EditText
+                android:id="@+id/searchEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="Search for help"
+                android:padding="8dp"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- FAQ Section -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/helpScreenTitle">
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/chatWithBanner"
+        app:layout_constraintTop_toBottomOf="@id/searchBarContainer">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp">
 
-            <RelativeLayout
+            <!-- FAQ Item 1 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/faqItem1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_back"
-                    android:drawablePadding="8dp"
-                    android:text="Help Center"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="#E1E1F0"
+                app:cardElevation="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/people_banner" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/btnChat"
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_outline"
-                            android:text="Chat"
-                            android:textAllCaps="false"
-                            android:textColor="#000000" />
-
-                        <Button
-                            android:id="@+id/btnGeneral"
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_purple"
-                            android:text="General"
-                            android:textAllCaps="false"
-                            android:textColor="#FFFFFF" />
-
-                        <Button
-                            android:id="@+id/btnChatPlus"
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_yellow"
-                            android:text="Community"
-                            android:textAllCaps="false"
-                            android:textColor="#000000" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:gravity="center"
-                        android:text="Search Here"
-                        android:textColor="#000000"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
                     <RelativeLayout
+                        android:id="@+id/faqHeader1"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/search_background">
+                        android:layout_height="wrap_content"
+                        android:padding="16dp">
 
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
-                            android:layout_marginStart="8dp"
-                            android:src="@drawable/ic_search" />
-
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="40dp"
-                            android:background="@null"
-                            android:hint="Search for help"
-                            android:textSize="14sp" />
-                    </RelativeLayout>
-
-                    <!-- Complaint Card with Expandable Content -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/complaintCardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        app:cardBackgroundColor="#C9D1E9"
-                        app:cardCornerRadius="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="What is the procedure to file complaint?"
-                                    android:textColor="#000000"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-
-                                <ImageView
-                                    android:id="@+id/complaintArrow"
-                                    android:layout_width="24dp"
-                                    android:layout_height="24dp"
-                                    android:layout_alignParentEnd="true"
-                                    android:src="@drawable/ic_down" />
-                            </RelativeLayout>
-
-                            <TextView
-                                android:id="@+id/complaintAnswer"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="To log complaints, see further details at www.delhipolice.com"
-                                android:textColor="#333333"
-                                android:visibility="visible" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- Community Card with Expandable Content -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/communityCardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        app:cardBackgroundColor="#E9E9E9"
-                        app:cardCornerRadius="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="How do I join the Community?"
-                                    android:textColor="#000000"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-
-                                <ImageView
-                                    android:id="@+id/communityArrow"
-                                    android:layout_width="24dp"
-                                    android:layout_height="24dp"
-                                    android:layout_alignParentEnd="true"
-                                    android:src="@drawable/ic_down" />
-                            </RelativeLayout>
-
-                            <TextView
-                                android:id="@+id/communityAnswer"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="Joining community discussions is easy. Navigate to the Community tab and follow the instructions to join groups that interest you."
-                                android:textColor="#333333"
-                                android:visibility="gone" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- Safety Card with Expandable Content -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/safetyCardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        app:cardBackgroundColor="#BBDFE8"
-                        app:cardCornerRadius="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="How do I setup my Safety device?"
-                                    android:textColor="#000000"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-
-                                <ImageView
-                                    android:id="@+id/safetyArrow"
-                                    android:layout_width="24dp"
-                                    android:layout_height="24dp"
-                                    android:layout_alignParentEnd="true"
-                                    android:src="@drawable/ic_down" />
-                            </RelativeLayout>
-
-                            <TextView
-                                android:id="@+id/safetyAnswer"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="To set up your safety device, follow the instructions provided with your device and connect it through the Safety section in the app settings."
-                                android:textColor="#333333"
-                                android:visibility="gone" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- Chat with SoraAI Section -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="To get personalized answers"
-                                android:textColor="#000000"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Chat with "
-                                    android:textColor="#000000"
-                                    android:textSize="16sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="SoraAI"
-                                    android:textColor="#4CAF50"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <Button
-                            android:id="@+id/btnChatAI"
-                            android:layout_width="0dp"
-                            android:layout_height="56dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_dark_blue"
-                            android:drawableStart="@drawable/crown_icon"
-                            android:paddingStart="16dp"
-                            android:paddingEnd="16dp"
-                            android:text="Chat +"
-                            android:textAllCaps="false"
-                            android:textColor="#FFFFFF"
+                            android:layout_marginEnd="32dp"
+                            android:layout_toStartOf="@id/faqArrow1"
+                            android:text="What is the procedure to file complaint?"
+                            android:textColor="@android:color/black"
                             android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <!-- Community Message Section -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginBottom="24dp"
-                        android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="150dp"
-                            android:layout_weight="1"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/community_group" />
+                            android:id="@+id/faqArrow1"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_arrow_down" />
+                    </RelativeLayout>
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="16dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Sexual violence is never the victim's fault. No matter the situation, no matter what was said, worn, or done—consent is mandatory, and NO means NO. If you ever feel unsafe, remember that help is always within reach."
-                                android:textColor="#000000"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/faqContent1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="16dp"
+                        android:paddingBottom="16dp"
+                        android:text="To log complaints, see further details at www.delhipolice.com"
+                        android:textColor="#333333"
+                        android:textSize="14sp" />
                 </LinearLayout>
-            </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- FAQ Item 2 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/faqItem2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="#F5F5F5"
+                app:cardElevation="1dp">
+
+                <RelativeLayout
+                    android:id="@+id/faqHeader2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="32dp"
+                        android:layout_toStartOf="@id/faqArrow2"
+                        android:text="How do I join the Community?"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/faqArrow2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_down" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- FAQ Item 3 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/faqItem3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="#D6EAF3"
+                app:cardElevation="1dp">
+
+                <RelativeLayout
+                    android:id="@+id/faqHeader3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="32dp"
+                        android:layout_toStartOf="@id/faqArrow3"
+                        android:text="How do I setup my Safety device?"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/faqArrow3"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_down" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
+
+    <!-- Bottom Chat Banner -->
+    <RelativeLayout
+        android:id="@+id/chatWithBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/infoSection">
+
+        <TextView
+            android:id="@+id/chatWithText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="To get personalized answers\nChat with"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chatWithText"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="4dp"
+            android:text="SoraAI"
+            android:textColor="#4CAF50"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnChatAI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            app:cardBackgroundColor="#0F1756"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/crown_icon"
+                    android:tint="#FFFFFF" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chat +"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <!-- Bottom info section with image and text -->
+    <LinearLayout
+        android:id="@+id/infoSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/community_group" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:text="Sexual violence is never the victim's fault. No matter the situation, no matter what was said, worn, or done—consent is mandatory, and NO means NO. If you ever feel unsafe, remember that help is always within reach."
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+    </LinearLayout>
 
     <!-- Bottom Navigation Bar -->
     <LinearLayout

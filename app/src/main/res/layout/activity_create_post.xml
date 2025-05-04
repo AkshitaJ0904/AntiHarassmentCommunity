@@ -11,9 +11,9 @@
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/navy_blue"
+        android:background="@drawable/curved_header_background"
         android:paddingTop="24dp"
-        android:paddingBottom="16dp"
+        android:paddingBottom="24dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
@@ -37,8 +37,8 @@
             android:textColor="@android:color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnCamera"
-            app:layout_constraintStart_toEndOf="@+id/btnBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
@@ -153,13 +153,14 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingBottom="8dp">
 
                     <TextView
                         android:id="@+id/tagGeneral"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="12dp"
                         android:background="@drawable/chip_background_general"
                         android:paddingStart="12dp"
                         android:paddingTop="6dp"
@@ -173,7 +174,7 @@
                         android:id="@+id/tagSupport"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="12dp"
                         android:background="@drawable/chip_background_support"
                         android:paddingStart="12dp"
                         android:paddingTop="6dp"
@@ -187,7 +188,7 @@
                         android:id="@+id/tagLegal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="12dp"
                         android:background="@drawable/chip_background_legal"
                         android:paddingStart="12dp"
                         android:paddingTop="6dp"
@@ -201,7 +202,7 @@
                         android:id="@+id/tagSafety"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="12dp"
                         android:background="@drawable/chip_background_safety"
                         android:paddingStart="12dp"
                         android:paddingTop="6dp"
@@ -215,7 +216,7 @@
                         android:id="@+id/tagProblems"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="12dp"
                         android:background="@drawable/chip_background_problems"
                         android:paddingStart="12dp"
                         android:paddingTop="6dp"
@@ -242,15 +243,46 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Bottom Buttons -->
-    <LinearLayout
+    <!-- Button Container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/buttonContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btnCreatePost"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/button_primary"
+            android:text="Create Post"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnCancel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/button_primary"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnCreatePost"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Bottom Navigation -->
     <LinearLayout
@@ -303,38 +335,5 @@
             android:src="@drawable/ic_profile"
             android:contentDescription="Profile" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btnCreatePost"
-        android:layout_width="144dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="4dp"
-        android:layout_weight="1"
-        android:background="@drawable/button_primary"
-        android:text="Create Post"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contentCard"
-        app:layout_constraintVertical_bias="0.483" />
-
-    <Button
-        android:id="@+id/btnCancel"
-        android:layout_width="144dp"
-        android:layout_height="52dp"
-        android:layout_weight="1"
-        android:background="@drawable/button_primary"
-        android:text="Cancel"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.434"
-        app:layout_constraintStart_toEndOf="@+id/btnCreatePost"
-        app:layout_constraintTop_toBottomOf="@+id/contentCard"
-        app:layout_constraintVertical_bias="0.479" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

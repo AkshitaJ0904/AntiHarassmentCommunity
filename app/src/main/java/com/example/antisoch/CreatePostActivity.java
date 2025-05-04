@@ -44,7 +44,7 @@ public class CreatePostActivity extends AppCompatActivity {
         btnCreatePost = findViewById(R.id.btnCreatePost);
         btnCancel = findViewById(R.id.btnCancel);
         btnBack = findViewById(R.id.btnBack);
-        btnCamera = findViewById(R.id.btnCamera); // ✅ Connected the camera/attachment button
+        btnCamera = findViewById(R.id.btnCamera);
     }
 
     private void setUpTagListeners() {

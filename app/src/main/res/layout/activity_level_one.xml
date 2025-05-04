@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/levelOneRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!-- Full-screen background -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/level1_background"
+        android:scaleType="centerCrop"
+        android:contentDescription="Background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Character and body buttons -->
+
+    <ImageButton
+        android:id="@+id/btnBackMap"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/characterLayout"
+        android:layout_width="360dp"
+        android:layout_height="309dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.5">
+
+        <ImageView
+            android:id="@+id/characterImage"
+            android:layout_width="399dp"
+            android:layout_height="343dp"
+            android:contentDescription="Main Character"
+            android:src="@drawable/character_girl"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/headButton"
+            android:layout_width="146dp"
+            android:layout_height="69dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Head Button"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.453"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.089" />
+
+        <Button
+            android:id="@+id/chestButton"
+            android:layout_width="68dp"
+            android:layout_height="56dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Chest Button"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/characterImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.554" />
+
+        <Button
+            android:id="@+id/privatepartButton"
+            android:layout_width="68dp"
+            android:layout_height="39dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Private Part Button"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/characterImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.707" />
+
+        <!-- Add more buttons similarly -->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Bear mascot -->
+    <ImageView
+        android:id="@+id/bearMascot"
+        android:layout_width="160dp"
+        android:layout_height="179dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Bear Mascot"
+        android:src="@drawable/bear_mascot"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Updated dialogue box -->
+    <LinearLayout
+        android:id="@+id/dialogueContainer"
+        android:layout_width="276dp"
+        android:layout_height="163dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/dialogue_box_bg"
+        android:orientation="vertical"
+        android:padding="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Speech bubble header with name -->
+        <TextView
+            android:id="@+id/speakerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/speaker_name_bg"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp"
+            android:text="TOTO"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Main dialogue text -->
+        <TextView
+            android:id="@+id/dialogueText"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:text="Some touches make us feel happy and safe, while others make us uncomfortable"
+            android:textColor="#2D5D7C"
+            android:textSize="18sp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

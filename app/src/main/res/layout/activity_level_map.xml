@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zoom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.otaliastudios.zoom.ZoomLayout
+        android:id="@+id/zoomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        zoom:maxZoom="2.5"
+        zoom:hasClickableChildren="true"
+        zoom:overScrollHorizontal="false"
+        zoom:overScrollVertical="false">
+
+        <FrameLayout
+            android:id="@+id/mapContainer"
+            android:layout_width="1920dp"
+            android:layout_height="1080dp">
+
+            <ImageView
+                android:id="@+id/mapImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/map_image3" />
+
+            <!-- Buttons added programmatically -->
+        </FrameLayout>
+    </com.otaliastudios.zoom.ZoomLayout>
+
+    <ImageButton
+        android:id="@+id/btnBackMap"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp"
+        android:background="@null"
+        android:src="@drawable/back_button"
+        android:scaleType="centerCrop" />
+</FrameLayout>

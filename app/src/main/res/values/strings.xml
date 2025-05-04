@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Safe-Space</string>
+    <string name="splash_image_description">Splash Header Image</string>
+    <string name="general">General</string>
+    <string name="support">Support</string>
+    <string name="legal">Legal</string>
+    <string name="safety">Safety</string>
+    <string name="resource">Resource</string>
+    <string name="review">Review</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="twitter">Twitter</string>
+    <string name="games">Games</string>
+    <string name="profile">Profile</string>
+    <string name="likes">Likes</string>
+    <string name="comments">Comments</string>
+    <string name="shares">Shares</string>
+    <string name="product_image">Product Image</string>
+    <string name="edit_button">Edit</string>
+    <string name="smile_button">Smile</string>
+    <string name="create_post">create_post\n\n</string>
+</resources>

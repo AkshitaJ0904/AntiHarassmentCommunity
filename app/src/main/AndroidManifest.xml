@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+    package="com.example.antisoch">
+
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AntiSoch">
 
+        <!-- 🚀 LAUNCHER ACTIVITY -->
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -21,6 +25,15 @@
             </intent-filter>
         </activity>
 
+        <!-- 🧠 Help & Chatbot Activities -->
+        <activity android:name="com.example.antisoch.HelpScreenActivity" android:exported="false" />
+        <activity android:name="com.example.antisoch.DashboardActivity" android:exported="false" />
+        <activity android:name="com.example.antisoch.ChatBotScreenActivity" android:exported="false" />
+        <activity android:name="com.example.antisoch.ChatHistoryActivity" android:exported="false" />
+        <activity android:name="com.example.antisoch.MyContactsActivity" android:exported="false" />
+        <activity android:name="com.example.antisoch.ProfileActivity" android:exported="false" />
+
+        <!-- 🧱 Community Feature Activities -->
         <activity android:name=".SplashLogoActivity" />
         <activity android:name=".IntroActivity" />
         <activity android:name=".IntroActivity2" />
@@ -30,6 +43,26 @@
         <activity android:name=".ChooseAvatarActivity" />
         <activity android:name=".WelcomeBackActivity" />
         <activity android:name=".HomeActivity" />
+        <activity android:name="com.example.antisoch.MainActivity" android:exported="false" />
+        <activity android:name="com.example.antisoch.SplashActivity2" android:exported="false" />
+        <activity android:name="com.example.antisoch.MainActivity2" android:exported="false" />
+
+        <!-- 📝 Post & Comment Related -->
+        <activity
+            android:name="com.example.antisoch.CreatePostActivity"
+            android:label="Create Post"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name="com.example.antisoch.UserPostsActivity"
+            android:label="Your Space"
+            android:theme="@style/AppTheme" />
+        <activity android:name="com.example.antisoch.EditPostActivity" />
+        <activity
+            android:name="com.example.antisoch.CommentActivity"
+            android:exported="false">
+            <meta-data android:name="android.app.lib_name" android:value="" />
+        </activity>
+
     </application>
 
 </manifest>

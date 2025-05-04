@@ -73,6 +73,19 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null) {
+            // User is already signed in, redirect to HomeActivity
+            Intent intent = new Intent(LoginActivity.this, ChooseAvatarActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
     private void createAccount(final String username, String password) {
         // Since Firebase Auth requires email, we'll create one using the username
         String email = username + "@antisoch.app";

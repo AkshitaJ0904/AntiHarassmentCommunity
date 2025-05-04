@@ -24,6 +24,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+
             <!-- Header Section with Avatar and Logo -->
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -55,6 +56,24 @@
                         android:textColor="#000000"
                         android:textSize="16sp" />
                 </LinearLayout>
+
+                <!-- Sign Out Button opposite to the logo -->
+                <Button
+                    android:id="@+id/btnSignOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@id/logoContainer"
+                    android:text="Sign Out"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/rounded_button_dark"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    />
+
 
                 <!-- Avatar centered below logo -->
                 <ImageView

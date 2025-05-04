@@ -1,11 +1,14 @@
 package com.example.antisoch;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -13,11 +16,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private static final String TAG = "HomeActivity";
     private TextView tvGreeting;
     private ImageView ivAvatar;
     private FirebaseAuth mAuth;
     private boolean isChildUser = false;
     private RelativeLayout communityCard;
+    private Button btnSignOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +34,15 @@ public class HomeActivity extends AppCompatActivity {
 
         tvGreeting = findViewById(R.id.tvGreeting);
         ivAvatar = findViewById(R.id.ivAvatar);
+        btnSignOut = findViewById(R.id.btnSignOut);
+
+        // Set click listener for sign out button
+        btnSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signOut();
+            }
+        });
 
         // Find the Community card
         communityCard = findViewById(R.id.communityCard);
@@ -84,6 +98,18 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     /**
+     * Sign out the current user and navigate back to login screen
+     */
+    private void signOut() {
+        FirebaseAuth.getInstance().signOut();
+        // Navigate back to login screen
+        Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    /**
      * Apply restrictions for child users
      */
     private void applyChildRestrictions() {
@@ -105,12 +131,21 @@ public class HomeActivity extends AppCompatActivity {
                 }
             });
         } else {
-            // For adult users, set the normal click listener for community card
+            // For adult users, navigate directly to MainActivity2 (Community Forum)
+            // bypassing the SplashActivity2 splash screen
             communityCard.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // TODO: Implement community feature navigation
-                    // For example: startActivity(new Intent(HomeActivity.this, CommunityActivity.class));
+                    try {
+                        // Navigate directly to MainActivity2 (Community Forum)
+                        Intent intent = new Intent(HomeActivity.this, MainActivity2.class);
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        Log.e(TAG, "Error starting MainActivity2: " + e.getMessage(), e);
+                        Toast.makeText(HomeActivity.this,
+                                "Unable to open Community feature at this time",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }
@@ -138,8 +173,16 @@ public class HomeActivity extends AppCompatActivity {
         helpCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Implement help feature navigation
-                // For example: startActivity(new Intent(HomeActivity.this, HelpActivity.class));
+                try {
+                    // Navigate to HelpScreenActivity when help card is clicked
+                    Intent intent = new Intent(HomeActivity.this, HelpScreenActivity.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.e(TAG, "Error starting HelpScreenActivity: " + e.getMessage(), e);
+                    Toast.makeText(HomeActivity.this,
+                            "Unable to open Help feature at this time",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -148,8 +191,16 @@ public class HomeActivity extends AppCompatActivity {
         dashboardCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Implement dashboard feature navigation
-                // For example: startActivity(new Intent(HomeActivity.this, DashboardActivity.class));
+                try {
+                    // Navigate to DashboardActivity when dashboard card is clicked
+                    Intent intent = new Intent(HomeActivity.this, DashboardActivity.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.e(TAG, "Error starting DashboardActivity: " + e.getMessage(), e);
+                    Toast.makeText(HomeActivity.this,
+                            "Unable to open Dashboard feature at this time",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

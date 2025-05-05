@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
+
 public class SoundManager {
     private static SoundManager instance;
     private MediaPlayer bgMusicPlayer;
@@ -20,10 +21,12 @@ public class SoundManager {
         bgMusicPlayer = MediaPlayer.create(context, R.raw.background_music);
         bgMusicPlayer.setLooping(true);
         isMusicPrepared = true;
+
         SharedPreferences prefs = context.getSharedPreferences("GamePrefs", Context.MODE_PRIVATE);
         musicEnabled = prefs.getBoolean("music_enabled", true);
         soundEnabled = prefs.getBoolean("sound_enabled", true);
     }
+
     public static SoundManager getInstance(Context context) {
         if (instance == null) {
             instance = new SoundManager(context.getApplicationContext());
@@ -44,7 +47,7 @@ public class SoundManager {
     }
 
     public void pauseMusic() {
-        if (bgMusicPlayer.isPlaying()) {
+        if (bgMusicPlayer != null && bgMusicPlayer.isPlaying()) {
             bgMusicPlayer.pause();
         }
     }
@@ -73,5 +76,12 @@ public class SoundManager {
             bgMusicPlayer = null;
         }
         soundPool.release();
+    }
+
+    // NEW METHOD: Set volume of background music
+    public void setMusicVolume(float volume) {
+        if (bgMusicPlayer != null) {
+            bgMusicPlayer.setVolume(volume, volume);
+        }
     }
 }

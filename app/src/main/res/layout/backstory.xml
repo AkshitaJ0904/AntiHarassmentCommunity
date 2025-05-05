@@ -17,6 +17,80 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
+    <!-- Cloud Left -->
+    <ImageView
+        android:id="@+id/cloudleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationX="-715dp"
+        android:elevation="5dp"
+        android:src="@drawable/cloud1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Cloud Right -->
+    <ImageView
+        android:id="@+id/cloudright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationX="725dp"
+        android:elevation="5dp"
+        android:src="@drawable/cloud2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Dialog Card 1 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dialogCard"
+        android:layout_width="385dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:cardBackgroundColor="#FDF6D2"
+        app:cardCornerRadius="30dp"
+        android:elevation="10dp"
+        app:cardElevation="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/dialogBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="#336699"
+            android:textSize="15sp"
+            android:layout_gravity="center" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Dialog Card 2 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dialogCard2"
+        android:layout_width="385dp"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#FDF6D2"
+        app:cardCornerRadius="30dp"
+        android:elevation="10dp"
+        app:cardElevation="10dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/dialogBox2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="#336699"
+            android:textSize="15sp"
+            android:layout_gravity="center" />
+    </androidx.cardview.widget.CardView>
+
     <!-- Nishu Image -->
     <ImageView
         android:id="@+id/nishu"
@@ -47,35 +121,11 @@
         android:layout_marginEnd="-33dp"
         android:layout_marginBottom="13dp"
         android:scaleType="fitCenter"
-        android:elevation="100dp"
+        android:elevation="6dp"
         android:visibility="visible"
         android:src="@drawable/map"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/nextButton" />
-
-    <!-- Dialog Card 1 -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/dialogCard"
-        android:layout_width="385dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        app:cardBackgroundColor="#FDF6D2"
-        app:cardCornerRadius="30dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TextView
-            android:id="@+id/dialogBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:padding="16dp"
-            android:fontFamily="@font/poppins_bold"
-            android:textColor="#336699"
-            android:textSize="15sp"
-            android:layout_gravity="center" />
-    </androidx.cardview.widget.CardView>
 
     <!-- Next Button -->
     <ImageButton
@@ -89,40 +139,5 @@
         android:src="@drawable/next_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Cloud Right -->
-    <ImageView
-        android:id="@+id/cloudright"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:translationX="725dp"
-        android:elevation="100dp"
-        android:src="@drawable/cloud2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-    <!-- Cloud Left -->
-    <ImageView
-        android:id="@+id/cloudleft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:translationX="-715dp"
-        android:elevation="100dp"
-        android:src="@drawable/cloud1"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Dialog Card 2 -->
-
-    <TextView
-        android:id="@+id/dialogBox2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:padding="16dp"
-        android:fontFamily="@font/poppins_bold"
-        android:textColor="#336699"
-        android:textSize="15sp"
-        android:layout_gravity="center_horizontal" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

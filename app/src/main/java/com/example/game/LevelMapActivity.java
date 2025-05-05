@@ -1,5 +1,6 @@
 package com.example.game;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -41,8 +42,11 @@ public class LevelMapActivity extends BaseActivity {
         ImageButton back = findViewById(R.id.btnBackMap);
         back.setOnClickListener(v -> {
             AppUtils.playClickSound(this);
+            Intent intent = new Intent(this, CharacterSelectActivity.class);
+            startActivity(intent);
             finish();
         });
+
 
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -88,7 +92,7 @@ public class LevelMapActivity extends BaseActivity {
         buttonLayout.setLayoutParams(layoutParams);
 
         ImageView imageView = new ImageView(this);
-        imageView.setImageResource(R.drawable.level_icon); // Your level button background
+        imageView.setImageResource(R.drawable.level_icon);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setLayoutParams(new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT,

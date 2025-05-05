@@ -1,0 +1,15 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item android:drawable="@drawable/totowalkhappy_01" android:duration="100"/>
+    <item android:drawable="@drawable/totowalkhappy_02" android:duration="100"/>
+    <item android:drawable="@drawable/totowalkhappy_03" android:duration="100"/>
+    <item android:drawable="@drawable/totowalkhappy_04" android:duration="100"/>
+    <item android:drawable="@drawable/totowalkhappy_05" android:duration="100"/>
+    <item android:drawable="@drawable/totowalkhappy_06" android:duration="100"/>
+    <item android:drawable="@drawable/totowalkhappy_07" android:duration="100"/>
+    <item android:drawable="@drawable/totowalkhappy_08" android:duration="100"/>
+    <item android:drawable="@drawable/totowalkhappy_09" android:duration="100"/>
+    <item android:drawable="@drawable/totowalkhappy_010" android:duration="100"/>
+    <item android:drawable="@drawable/totowalkhappy_011" android:duration="100"/>
+    <item android:drawable="@drawable/totowalkhappy_012" android:duration="100"/>
+</animation-list>

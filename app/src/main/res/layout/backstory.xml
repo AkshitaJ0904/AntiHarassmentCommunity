@@ -1,0 +1,105 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Background -->
+    <ImageView
+        android:id="@+id/background"
+        android:src="@drawable/backstory_bg"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000"/>
+
+    <!-- Nishu animation -->
+
+    <!-- Toto -->
+
+    <!-- Dialog Box -->
+
+    <ImageView
+        android:id="@+id/nishu"
+        android:layout_width="250dp"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-37dp"
+        android:src="@drawable/nishu_idle" />
+
+    <!-- Next Button -->
+
+
+    <ImageView
+        android:id="@+id/map"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-33dp"
+        android:layout_marginBottom="13dp"
+        android:layout_toStartOf="@id/nextButton"
+        android:elevation="100dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/map" />
+
+    <ImageView
+        android:id="@+id/toto"
+        android:layout_width="128dp"
+        android:layout_height="137dp"
+        android:layout_alignBottom="@id/nishu"
+        android:layout_marginLeft="-94dp"
+        android:layout_marginBottom="91dp"
+        android:layout_toRightOf="@id/nishu"
+        android:scaleX="-1"
+        android:src="@drawable/toto_idle" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dialogCard"
+        android:layout_width="385dp"
+        android:layout_height="85dp"
+        app:cardBackgroundColor="#FDF6D2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="30dp">
+
+        <TextView
+            android:id="@+id/dialogBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="16dp"
+            android:textColor="#336699"
+            android:textSize="15sp"
+            android:layout_gravity="center"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/narrator"
+        android:layout_width="115dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@id/dialogCard"
+        android:layout_alignStart="@id/dialogCard"
+        android:layout_marginTop="-20dp"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="#336699"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Narrator: "
+        android:elevation="12dp"
+        android:translationZ="12dp"
+        android:textSize="13sp" />
+
+
+    <ImageButton
+        android:id="@+id/nextButton"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="-6dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/next_button" />
+
+</RelativeLayout>

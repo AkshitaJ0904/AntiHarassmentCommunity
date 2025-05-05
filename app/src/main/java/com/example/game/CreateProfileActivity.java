@@ -46,7 +46,7 @@ public class CreateProfileActivity extends BaseActivity {
                     PlayerProfile newProfile = new PlayerProfile(username, selectedCharacter, 0);
                     ProfileManager.addProfile(this, newProfile);
 
-                    Intent intent = new Intent(this, BackstoryActivity.class);
+                    Intent intent = new Intent(this, backstory.class);
                     intent.putExtra("username", username);
                     intent.putExtra("character", selectedCharacter);
                     startActivity(intent);

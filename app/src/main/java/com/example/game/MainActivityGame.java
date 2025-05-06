@@ -6,27 +6,19 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
-public class MainActivity extends BaseActivity {
+public class MainActivityGame extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Make the window full screen
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
-
-        // Hide the ActionBar if present
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-
-        // Set the layout
-        setContentView(R.layout.activity_main);
-
-        // Enter immersive full-screen mode
+        setContentView(R.layout.activity_main_game);
         hideSystemUI();
 
         // Button logic

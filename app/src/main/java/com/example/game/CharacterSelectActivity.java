@@ -73,7 +73,7 @@ public class CharacterSelectActivity extends BaseActivity {
         ImageButton back = findViewById(R.id.btnHome);
         back.setOnClickListener(v -> {
             AppUtils.playClickSound(this);
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, MainActivityGame.class));
         });
     }
 

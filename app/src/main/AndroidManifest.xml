@@ -49,7 +49,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:ignore="DiscouragedApi" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivityGame"
             android:exported="true"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"

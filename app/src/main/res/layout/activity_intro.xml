@@ -66,8 +66,8 @@
 
         <!-- Character Image - positioned to overlap with the bottom right -->
         <ImageView
-            android:layout_width="304dp"
-            android:layout_height="473dp"
+            android:layout_width="277dp"
+            android:layout_height="444dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:scaleType="fitEnd"

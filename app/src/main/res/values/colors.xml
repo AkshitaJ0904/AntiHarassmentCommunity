@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#9370DB</color>
     <color name="purple_500">#9370DB</color>
@@ -61,7 +62,7 @@
     <color name="yellow_light">#FFEB3B</color> <!-- Example yellow -->
     <color name="medium_gray">#EEEEEE</color>
     <color name="dark_gray">#7D7D7D</color>
-    
+
     <!-- Tab button colors for HelpScreenActivity -->
     <color name="btn_community">#8A2BE2</color> <!-- Purple for Community tab -->
     <color name="btn_general">#3498DB</color> <!-- Blue for General tab -->

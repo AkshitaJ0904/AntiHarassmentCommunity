@@ -1,0 +1,143 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Background -->
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/backstory_bg"
+        android:background="#00000000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Cloud Left -->
+    <ImageView
+        android:id="@+id/cloudleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationX="-715dp"
+        android:elevation="5dp"
+        android:src="@drawable/cloud1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Cloud Right -->
+    <ImageView
+        android:id="@+id/cloudright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationX="725dp"
+        android:elevation="5dp"
+        android:src="@drawable/cloud2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Dialog Card 1 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dialogCard"
+        android:layout_width="385dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:cardBackgroundColor="#FDF6D2"
+        app:cardCornerRadius="30dp"
+        android:elevation="10dp"
+        app:cardElevation="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/dialogBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="#336699"
+            android:textSize="15sp"
+            android:layout_gravity="center" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Dialog Card 2 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dialogCard2"
+        android:layout_width="385dp"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#FDF6D2"
+        app:cardCornerRadius="30dp"
+        android:elevation="10dp"
+        app:cardElevation="10dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/dialogBox2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="#336699"
+            android:textSize="15sp"
+            android:layout_gravity="center" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Nishu Image -->
+    <ImageView
+        android:id="@+id/nishu"
+        android:layout_width="250dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="-37dp"
+        android:src="@drawable/nishu_idle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Toto Image -->
+    <ImageView
+        android:id="@+id/toto"
+        android:layout_width="128dp"
+        android:layout_height="137dp"
+        android:layout_marginLeft="-94dp"
+        android:layout_marginBottom="91dp"
+        android:scaleX="-1"
+        android:src="@drawable/toto_idle"
+        app:layout_constraintBottom_toBottomOf="@+id/nishu"
+        app:layout_constraintStart_toEndOf="@+id/nishu" />
+
+    <!-- Map -->
+    <ImageView
+        android:id="@+id/map"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="-33dp"
+        android:layout_marginBottom="13dp"
+        android:scaleType="fitCenter"
+        android:elevation="6dp"
+        android:visibility="visible"
+        android:src="@drawable/map"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nextButton" />
+
+    <!-- Next Button -->
+    <ImageButton
+        android:id="@+id/nextButton"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="-6dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/next_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

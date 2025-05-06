@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.example.antisoch.game.MainActivityGame;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -163,8 +164,16 @@ public class HomeActivity extends AppCompatActivity {
         gameCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Implement game feature navigation
-                // For example: startActivity(new Intent(HomeActivity.this, GameActivity.class));
+                try {
+                    // Navigate to HelpScreenActivity when help card is clicked
+                    Intent intent = new Intent(HomeActivity.this, MainActivityGame.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.e(TAG, "Error starting HelpScreenActivity: " + e.getMessage(), e);
+                    Toast.makeText(HomeActivity.this,
+                            "Unable to open Help feature at this time",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

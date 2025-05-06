@@ -15,7 +15,7 @@
             android:layout_height="0dp"
             android:layout_margin="16dp"
             android:layout_weight="3"
-            android:background="#D6DCF5">
+            android:background="@drawable/rounded_white_background">>
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
@@ -49,6 +49,17 @@
                 android:textSize="42sp"
                 android:fontFamily="serif"
                 android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvSmallHashtag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvHashtag"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="#NoMoreLogKyaSochenge"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="italic"/>
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnJoinIn"
                 android:layout_width="120dp"

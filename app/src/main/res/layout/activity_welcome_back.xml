@@ -22,8 +22,8 @@
 
             <ImageView
                 android:id="@+id/ivGroupImage"
-                android:layout_width="307dp"
-                android:layout_height="194dp"
+                android:layout_width="278dp"
+                android:layout_height="179dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="22dp"
                 android:src="@drawable/welcome_group_image" />

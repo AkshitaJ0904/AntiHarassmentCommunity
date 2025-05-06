@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Game"
         tools:targetApi="31">
         <activity
+            android:name=".Level2"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            tools:ignore="DiscouragedApi"/>
+        <activity
             android:name=".backstory"
             android:exported="false"
             android:screenOrientation="landscape"

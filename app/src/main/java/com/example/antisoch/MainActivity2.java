@@ -40,7 +40,7 @@ public class MainActivity2 extends AppCompatActivity implements BottomNavigation
         setupBottomNavigation();
         setupRecyclerView();
         setupEditButton(); // Changed from FAB to Edit Button
-        loadForumPosts();
+        loadForumPostsFromFirebase();
     }
 
     private void initializeViews() {
@@ -90,12 +90,36 @@ public class MainActivity2 extends AppCompatActivity implements BottomNavigation
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == CREATE_POST_REQUEST_CODE && resultCode == RESULT_OK) {
-            loadForumPosts();
+            loadForumPostsFromFirebase();
             Toast.makeText(this, "Post created successfully!", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void loadForumPosts() {
+    private void loadForumPostsFromFirebase() {
+        // Show loading indicator or progress bar if needed
+        
+        FirebaseUtil.getAllPosts(new FirebaseUtil.PostsLoadListener() {
+            @Override
+            public void onPostsLoaded(List<ForumPost> posts) {
+                // Update the posts list and notify adapter
+                forumPosts.clear();
+                forumPosts.addAll(posts);
+                forumPostAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                Toast.makeText(MainActivity2.this, 
+                        "Error loading posts: " + errorMessage, 
+                        Toast.LENGTH_SHORT).show();
+                
+                // Load sample data as fallback if Firebase fails
+                loadSamplePosts();
+            }
+        });
+    }
+
+    private void loadSamplePosts() {
         forumPosts.clear();
 
         final int likes = 125;
@@ -139,8 +163,34 @@ public class MainActivity2 extends AppCompatActivity implements BottomNavigation
     }
 
     private void filterPostsByCategory(int tabId) {
-        // For now just reload all posts
-        loadForumPosts();
+        if (tabId == R.id.chip_general) {
+            // Load all posts
+            loadForumPostsFromFirebase();
+            return;
+        }
+        
+        // Get the selected chip text
+        Chip selectedChip = findViewById(tabId);
+        if (selectedChip != null) {
+            String category = selectedChip.getText().toString();
+            
+            // Load posts filtered by category
+            FirebaseUtil.getPostsByTag(category, new FirebaseUtil.PostsLoadListener() {
+                @Override
+                public void onPostsLoaded(List<ForumPost> posts) {
+                    forumPosts.clear();
+                    forumPosts.addAll(posts);
+                    forumPostAdapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onFailure(String errorMessage) {
+                    Toast.makeText(MainActivity2.this, 
+                            "Error loading filtered posts: " + errorMessage, 
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     @Override
@@ -158,5 +208,12 @@ public class MainActivity2 extends AppCompatActivity implements BottomNavigation
             return true;
         }
         return false;
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Refresh posts when coming back to this activity
+        loadForumPostsFromFirebase();
     }
 }

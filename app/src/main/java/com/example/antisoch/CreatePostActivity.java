@@ -11,6 +11,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class CreatePostActivity extends AppCompatActivity {
 
     private EditText etSubject, etContent;
@@ -116,21 +120,59 @@ public class CreatePostActivity extends AppCompatActivity {
         String subject = etSubject.getText().toString().trim();
         String content = etContent.getText().toString().trim();
 
+        // Show loading indicator
+        btnCreatePost.setEnabled(false);
+        btnCreatePost.setText("Creating Post...");
+
+        // Create post object
         ForumPost post = new ForumPost();
         post.setSubject(subject);
         post.setContent(content);
         post.setTag(selectedTag);
         post.setUsername("Golangnya"); // TODO: Replace with logged-in user's username
         post.setTimestamp(System.currentTimeMillis());
+        post.setTimePosted("Just now"); // Will be formatted when retrieved
+        
+        // Add categories for compatibility with ForumPostAdapter
+        List<String> categories = new ArrayList<>();
+        categories.add("General");
+        categories.add(selectedTag);
+        post.setCategories(categories);
+        
+        // Set default counts
+        post.setLikes(0);
+        post.setComments(0);
+        post.setShares(0);
 
-        // TODO: Add to database or send to backend API
+        // Save post to Firebase
+        FirebaseUtil.savePost(post, new FirebaseUtil.PostUploadListener() {
+            @Override
+            public void onSuccess(ForumPost post) {
+                runOnUiThread(() -> {
+                    Toast.makeText(CreatePostActivity.this, "Post created successfully!", Toast.LENGTH_SHORT).show();
+                    
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("post_created", true);
+                    
+                    // If started for result, return result
+                    setResult(RESULT_OK, resultIntent);
+                    
+                    // Navigate to UserPostsActivity
+                    Intent intent = new Intent(CreatePostActivity.this, UserPostsActivity.class);
+                    startActivity(intent);
+                    finish();
+                });
+            }
 
-        Toast.makeText(this, "Post created successfully!", Toast.LENGTH_SHORT).show();
-
-        Intent intent = new Intent(this, UserPostsActivity.class); // ✅
-
-        startActivity(intent);
-        finish();
+            @Override
+            public void onFailure(String errorMessage) {
+                runOnUiThread(() -> {
+                    btnCreatePost.setEnabled(true);
+                    btnCreatePost.setText("Create Post");
+                    Toast.makeText(CreatePostActivity.this, "Error creating post: " + errorMessage, Toast.LENGTH_SHORT).show();
+                });
+            }
+        });
     }
 
     // Bottom navigation methods

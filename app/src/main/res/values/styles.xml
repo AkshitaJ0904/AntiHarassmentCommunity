@@ -39,6 +39,11 @@
         <item name="chipMinHeight">32dp</item>
         <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="chipIconSize">16dp</item>
+        <item name="android:elevation">1dp</item>
+        <item name="rippleColor">@color/ripple_color</item>
     </style>
 
     <style name="CategoryChipStyle" parent="Widget.MaterialComponents.Chip.Action">
@@ -46,5 +51,12 @@
         <item name="android:textSize">12sp</item>
         <item name="chipMinHeight">28dp</item>
         <item name="android:textColor">@color/text_primary</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="chipIconSize">16dp</item>
+        <item name="chipBackgroundColor">@color/category_chip_background</item>
+        <item name="rippleColor">@color/ripple_color</item>
     </style>
 </resources>

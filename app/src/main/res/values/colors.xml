@@ -66,4 +66,14 @@
     <color name="btn_community">#8A2BE2</color> <!-- Purple for Community tab -->
     <color name="btn_general">#3498DB</color> <!-- Blue for General tab -->
     <color name="btn_chat">#27AE60</color> <!-- Green for Chat tab -->
+
+    <!-- Category Chip Colors -->
+    <color name="support_color">#4CAF50</color>
+    <color name="legal_color">#FFC107</color>
+    <color name="safety_color">#8BC34A</color>
+    <color name="problems_color">#FF5722</color>
+    <color name="features_color">#E91E63</color>
+    <color name="resource_color">#009688</color>
+    <color name="review_color">#9C27B0</color>
+    <color name="ripple_color">#33000000</color>
 </resources>

@@ -2,6 +2,8 @@ package com.example.antisoch;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -60,22 +63,8 @@ public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.View
             holder.postImage.setVisibility(View.GONE);
         }
 
-        // Set categories
-        List<String> categories = post.getCategories();
-        if (categories != null && categories.size() > 0) {
-            holder.chipCategory1.setText(categories.get(0));
-            holder.chipCategory1.setVisibility(View.VISIBLE);
-
-            if (categories.size() > 1) {
-                holder.chipCategory2.setText(categories.get(1));
-                holder.chipCategory2.setVisibility(View.VISIBLE);
-            } else {
-                holder.chipCategory2.setVisibility(View.GONE);
-            }
-        } else {
-            holder.chipCategory1.setVisibility(View.GONE);
-            holder.chipCategory2.setVisibility(View.GONE);
-        }
+        // Set categories with improved styling
+        setupCategoryChips(holder, post);
 
         // Set interaction counts
         holder.textLikes.setText(String.valueOf(post.getLikes()));
@@ -94,6 +83,86 @@ public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.View
         });
     }
 
+    /**
+     * Set up category chips with consistent styling based on category type
+     */
+    private void setupCategoryChips(ViewHolder holder, ForumPost post) {
+        List<String> categories = post.getCategories();
+        
+        // Reset visibility
+        holder.chipCategory1.setVisibility(View.GONE);
+        holder.chipCategory2.setVisibility(View.GONE);
+        
+        if (categories == null || categories.isEmpty()) {
+            // If no categories, use the single tag if available
+            if (post.getTag() != null && !post.getTag().isEmpty()) {
+                setupSingleChip(holder.chipCategory1, post.getTag());
+            }
+            return;
+        }
+        
+        // First category
+        if (categories.size() > 0 && categories.get(0) != null) {
+            setupSingleChip(holder.chipCategory1, categories.get(0));
+        }
+        
+        // Second category
+        if (categories.size() > 1 && categories.get(1) != null) {
+            setupSingleChip(holder.chipCategory2, categories.get(1));
+        }
+    }
+    
+    /**
+     * Configure a single chip with the appropriate style based on category type
+     */
+    private void setupSingleChip(Chip chip, String category) {
+        if (category == null || category.isEmpty()) {
+            chip.setVisibility(View.GONE);
+            return;
+        }
+        
+        chip.setText(category);
+        chip.setVisibility(View.VISIBLE);
+        
+        // Set color based on category
+        int backgroundColor;
+        int textColor = Color.WHITE; // Default text color
+        
+        switch (category.toLowerCase()) {
+            case "general":
+                backgroundColor = ContextCompat.getColor(context, R.color.dark_blue);
+                break;
+            case "support":
+                backgroundColor = ContextCompat.getColor(context, R.color.support_color);
+                break;
+            case "legal":
+                backgroundColor = ContextCompat.getColor(context, R.color.legal_color);
+                break;
+            case "safety":
+                backgroundColor = ContextCompat.getColor(context, R.color.safety_color);
+                textColor = Color.BLACK; // Black text for light-colored chips
+                break;
+            case "problems":
+                backgroundColor = ContextCompat.getColor(context, R.color.problems_color);
+                break;
+            case "features":
+                backgroundColor = ContextCompat.getColor(context, R.color.features_color);
+                break;
+            case "resource":
+                backgroundColor = ContextCompat.getColor(context, R.color.resource_color);
+                break;
+            case "review":
+                backgroundColor = ContextCompat.getColor(context, R.color.review_color);
+                break;
+            default:
+                backgroundColor = ContextCompat.getColor(context, R.color.category_chip_background);
+                break;
+        }
+        
+        chip.setChipBackgroundColor(ColorStateList.valueOf(backgroundColor));
+        chip.setTextColor(textColor);
+    }
+
     @Override
     public int getItemCount() {
         return forumPosts.size();
@@ -105,7 +174,7 @@ public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.View
         ImageView postImage;
         Chip chipCategory1, chipCategory2;
         TextView textLikes, textComments, textShares;
-        ImageView commentIcon; // New field for comment icon
+        ImageView commentIcon;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -120,7 +189,7 @@ public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.View
             textLikes = itemView.findViewById(R.id.likeCountText);
             textComments = itemView.findViewById(R.id.commentCountText);
             textShares = itemView.findViewById(R.id.shareCountText);
-            commentIcon = itemView.findViewById(R.id.commentIcon); // Make sure this ID exists in your layout
+            commentIcon = itemView.findViewById(R.id.commentIcon);
         }
     }
 }

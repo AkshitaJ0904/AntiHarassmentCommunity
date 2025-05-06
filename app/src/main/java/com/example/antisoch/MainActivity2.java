@@ -19,6 +19,7 @@ import com.google.android.material.chip.ChipGroup;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity2 extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -28,6 +29,7 @@ public class MainActivity2 extends AppCompatActivity implements BottomNavigation
     private RecyclerView recyclerForumPosts;
     private ForumPostAdapter forumPostAdapter;
     private List<ForumPost> forumPosts;
+    private List<ForumPost> allForumPosts; // Cache of all posts for local filtering
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class MainActivity2 extends AppCompatActivity implements BottomNavigation
         setupTabChips();
         setupBottomNavigation();
         setupRecyclerView();
-        setupEditButton(); // Changed from FAB to Edit Button
+        setupEditButton();
         loadForumPostsFromFirebase();
     }
 
@@ -65,6 +67,7 @@ public class MainActivity2 extends AppCompatActivity implements BottomNavigation
     private void setupRecyclerView() {
         recyclerForumPosts.setLayoutManager(new LinearLayoutManager(this));
         forumPosts = new ArrayList<>();
+        allForumPosts = new ArrayList<>();
         forumPostAdapter = new ForumPostAdapter(this, forumPosts, getSupportFragmentManager());
         recyclerForumPosts.setAdapter(forumPostAdapter);
     }
@@ -104,6 +107,11 @@ public class MainActivity2 extends AppCompatActivity implements BottomNavigation
                 // Update the posts list and notify adapter
                 forumPosts.clear();
                 forumPosts.addAll(posts);
+                
+                // Keep a copy of all posts for local filtering
+                allForumPosts.clear();
+                allForumPosts.addAll(posts);
+                
                 forumPostAdapter.notifyDataSetChanged();
             }
 
@@ -121,6 +129,7 @@ public class MainActivity2 extends AppCompatActivity implements BottomNavigation
 
     private void loadSamplePosts() {
         forumPosts.clear();
+        allForumPosts.clear();
 
         final int likes = 125;
         final int comments = 15;
@@ -136,6 +145,7 @@ public class MainActivity2 extends AppCompatActivity implements BottomNavigation
                 tags1,
                 likes, comments, shares);
         forumPosts.add(post1);
+        allForumPosts.add(post1);
 
         List<String> tags2 = new ArrayList<>(Arrays.asList("General", "Support"));
         ForumPost post2 = new ForumPost(
@@ -147,6 +157,7 @@ public class MainActivity2 extends AppCompatActivity implements BottomNavigation
                 tags2,
                 likes, comments, shares);
         forumPosts.add(post2);
+        allForumPosts.add(post2);
 
         List<String> tags3 = new ArrayList<>(Arrays.asList("General", "Support"));
         ForumPost post3 = new ForumPost(
@@ -158,6 +169,7 @@ public class MainActivity2 extends AppCompatActivity implements BottomNavigation
                 tags3,
                 likes, comments, shares);
         forumPosts.add(post3);
+        allForumPosts.add(post3);
 
         forumPostAdapter.notifyDataSetChanged();
     }
@@ -165,7 +177,7 @@ public class MainActivity2 extends AppCompatActivity implements BottomNavigation
     private void filterPostsByCategory(int tabId) {
         if (tabId == R.id.chip_general) {
             // Load all posts
-            loadForumPostsFromFirebase();
+            resetToAllPosts();
             return;
         }
         
@@ -174,23 +186,88 @@ public class MainActivity2 extends AppCompatActivity implements BottomNavigation
         if (selectedChip != null) {
             String category = selectedChip.getText().toString();
             
-            // Load posts filtered by category
-            FirebaseUtil.getPostsByTag(category, new FirebaseUtil.PostsLoadListener() {
-                @Override
-                public void onPostsLoaded(List<ForumPost> posts) {
+            // First try server-side filtering
+            filterPostsServerSide(category);
+        }
+    }
+    
+    /**
+     * Filter posts using Firebase query (server-side)
+     */
+    private void filterPostsServerSide(String category) {
+        // Show loading indicator if needed
+        
+        FirebaseUtil.getPostsByTag(category, new FirebaseUtil.PostsLoadListener() {
+            @Override
+            public void onPostsLoaded(List<ForumPost> posts) {
+                if (posts != null && !posts.isEmpty()) {
+                    // Update posts if server returned results
                     forumPosts.clear();
                     forumPosts.addAll(posts);
                     forumPostAdapter.notifyDataSetChanged();
+                } else {
+                    // Fall back to client-side filtering if server returns no results
+                    filterPostsClientSide(category);
                 }
+            }
 
-                @Override
-                public void onFailure(String errorMessage) {
-                    Toast.makeText(MainActivity2.this, 
-                            "Error loading filtered posts: " + errorMessage, 
-                            Toast.LENGTH_SHORT).show();
+            @Override
+            public void onFailure(String errorMessage) {
+                // Fall back to client-side filtering on error
+                filterPostsClientSide(category);
+            }
+        });
+    }
+    
+    /**
+     * Filter posts locally (client-side)
+     */
+    private void filterPostsClientSide(String category) {
+        // Normalize category for case-insensitive comparison
+        String normalizedCategory = category.toLowerCase(Locale.ROOT);
+        
+        List<ForumPost> filteredPosts = new ArrayList<>();
+        
+        for (ForumPost post : allForumPosts) {
+            // Check in single tag field
+            if (post.getTag() != null && 
+                post.getTag().toLowerCase(Locale.ROOT).equals(normalizedCategory)) {
+                filteredPosts.add(post);
+                continue;
+            }
+            
+            // Check in categories list
+            List<String> categories = post.getCategories();
+            if (categories != null) {
+                for (String postCategory : categories) {
+                    if (postCategory != null && 
+                        postCategory.toLowerCase(Locale.ROOT).equals(normalizedCategory)) {
+                        filteredPosts.add(post);
+                        break;
+                    }
                 }
-            });
+            }
         }
+        
+        // Update the UI with filtered posts
+        forumPosts.clear();
+        forumPosts.addAll(filteredPosts);
+        forumPostAdapter.notifyDataSetChanged();
+        
+        // Show message if no posts match the filter
+        if (filteredPosts.isEmpty()) {
+            Toast.makeText(this, "No posts found with category: " + category, 
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+    
+    /**
+     * Reset to showing all posts
+     */
+    private void resetToAllPosts() {
+        forumPosts.clear();
+        forumPosts.addAll(allForumPosts);
+        forumPostAdapter.notifyDataSetChanged();
     }
 
     @Override

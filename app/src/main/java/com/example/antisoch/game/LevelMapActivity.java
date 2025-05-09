@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.example.antisoch.R;
 import com.otaliastudios.zoom.ZoomLayout;
@@ -23,53 +24,63 @@ public class LevelMapActivity extends BaseActivity {
 
     private FrameLayout mapContainer;
     private ZoomLayout zoomLayout;
+    private int profileIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-        );
-        if (getSupportActionBar() != null) getSupportActionBar().hide();
+        try {
+            getWindow().setFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN
+            );
+            if (getSupportActionBar() != null) getSupportActionBar().hide();
 
-        setContentView(R.layout.activity_level_map);
-        hideSystemUI();
+            setContentView(R.layout.activity_level_map);
+            hideSystemUI();
 
-        mapContainer = findViewById(R.id.mapContainer);
-        zoomLayout = findViewById(R.id.zoomLayout);
+            mapContainer = findViewById(R.id.mapContainer);
+            zoomLayout = findViewById(R.id.zoomLayout);
 
-        ImageButton back = findViewById(R.id.btnBackMap);
-        back.setOnClickListener(v -> {
-            AppUtils.playClickSound(this);
-            Intent intent = new Intent(this, CharacterSelectActivity.class);
-            startActivity(intent);
-            finish();
-        });
+            ImageButton back = findViewById(R.id.btnBackMap);
+            back.setOnClickListener(v -> {
+                AppUtils.playClickSound(this);
+                Intent intent = new Intent(this, CharacterSelectActivity.class);
+                startActivity(intent);
+                finish();
+            });
 
+            DisplayMetrics metrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            int screenWidth = metrics.widthPixels;
+            int screenHeight = metrics.heightPixels;
 
-        int screenWidth = metrics.widthPixels;
-        int screenHeight = metrics.heightPixels;
+            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mapContainer.getLayoutParams();
+            layoutParams.width = screenWidth;
+            layoutParams.height = screenHeight;
+            mapContainer.setLayoutParams(layoutParams);
 
-        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mapContainer.getLayoutParams();
-        layoutParams.width = screenWidth;
-        layoutParams.height = screenHeight;
-        mapContainer.setLayoutParams(layoutParams);
+            mapContainer.post(() -> {
+                try {
+                    float scaleX = (float) screenWidth / mapContainer.getWidth();
+                    float scaleY = (float) screenHeight / mapContainer.getHeight();
+                    float minZoom = Math.min(scaleX, scaleY);
 
-        mapContainer.post(() -> {
-            float scaleX = (float) screenWidth / mapContainer.getWidth();
-            float scaleY = (float) screenHeight / mapContainer.getHeight();
-            float minZoom = Math.min(scaleX, scaleY);
+                    zoomLayout.setMinZoom(minZoom);
+                    zoomLayout.zoomTo(minZoom, false);
 
-            zoomLayout.setMinZoom(minZoom);
-            zoomLayout.zoomTo(minZoom, false);
-
-            addAllLevelButtons();
-        });
+                    addAllLevelButtons();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(this, "Error initializing map: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error in onCreate: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     private void addAllLevelButtons() {
@@ -108,7 +119,13 @@ public class LevelMapActivity extends BaseActivity {
         buttonLayout.setOnClickListener(v -> {
             AppUtils.playClickSound(this);
             if ("1".equals(levelNumber)) {
-                startActivity(new android.content.Intent(this, LevelOneActivity.class));
+                Intent intent = new Intent(this, LevelOneActivity.class);
+                intent.putExtra("profileIndex", profileIndex);
+                startActivity(intent);
+            } else if ("2".equals(levelNumber)) {
+                Intent intent = new Intent(this, LevelTwo.class);
+                intent.putExtra("profileIndex", profileIndex);
+                startActivity(intent);
             } else {
                 android.widget.Toast.makeText(this, "Level " + levelNumber + " clicked", android.widget.Toast.LENGTH_SHORT).show();
             }
@@ -125,7 +142,7 @@ public class LevelMapActivity extends BaseActivity {
         textView.setTextColor(Color.WHITE);
 
         // Load Lilita One and apply BOLD style
-        Typeface lilita = Typeface.createFromAsset(getAssets(), "fonts/LilitaOne-Regular.ttf");
+        Typeface lilita = ResourcesCompat.getFont(this, R.font.lilitaone_regular);
         textView.setTypeface(Typeface.create(lilita, Typeface.BOLD)); // Enforce bold
 
         textView.setGravity(Gravity.CENTER);
@@ -142,8 +159,6 @@ public class LevelMapActivity extends BaseActivity {
 
         return textView;
     }
-
-
 
     @Override
     protected void onResume() {

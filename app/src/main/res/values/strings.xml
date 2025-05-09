@@ -19,12 +19,11 @@
     <string name="edit_button">Edit</string>
     <string name="smile_button">Smile</string>
     <string name="create_post">create_post\n\n</string>
-<!--    <string name="app_name">SoraAIHelp</string>-->
+    <!--    <string name="app_name">SoraAIHelp</string>-->
     <string name="my_contacts">My Contacts</string>
     <string name="search_hint">Search</string>
     <string name="emergency_contacts_info">Emergency contacts like relatives and friends ensure quick response by receiving live location alerts and distress signals from the device.\n\nTheir immediate action, such as informing authorities or reaching the victim, strengthens safety and enhances real-time protection.</string>
     <string name="add_contact_soon">Add Contact functionality coming soon</string>
-
 
 
 </resources>

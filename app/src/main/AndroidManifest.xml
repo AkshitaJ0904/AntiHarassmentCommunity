@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.antisoch">
-
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -14,7 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AntiSoch">
-
+        <activity
+            android:name=".game.LevelTwo"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            tools:ignore="DiscouragedApi"/>
         <!-- 🚀 LAUNCHER ACTIVITY -->
         <activity
             android:name=".SplashActivity"
@@ -22,19 +26,28 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- 🧠 Help & Chatbot Activities -->
-        <activity android:name="com.example.antisoch.HelpScreenActivity" android:exported="false" />
-        <activity android:name="com.example.antisoch.DashboardActivity" android:exported="false" />
-        <activity android:name="com.example.antisoch.ChatBotScreenActivity" android:exported="false" />
-        <activity android:name="com.example.antisoch.ChatHistoryActivity" android:exported="false" />
-        <activity android:name="com.example.antisoch.MyContactsActivity" android:exported="false" />
-        <activity android:name="com.example.antisoch.ProfileActivity" android:exported="false" />
-
-        <!-- 🧱 Community Feature Activities -->
+        </activity> <!-- 🧠 Help & Chatbot Activities -->
+        <activity
+            android:name=".HelpScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatBotScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyContactsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" /> <!-- 🧱 Community Feature Activities -->
         <activity android:name=".SplashLogoActivity" />
         <activity android:name=".IntroActivity" />
         <activity android:name=".IntroActivity2" />
@@ -44,64 +57,69 @@
         <activity android:name=".ChooseAvatarActivity" />
         <activity android:name=".WelcomeBackActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name="com.example.antisoch.MainActivity" android:exported="false" />
-        <activity android:name="com.example.antisoch.SplashActivity2" android:exported="false" />
-        <activity android:name="com.example.antisoch.MainActivity2" android:exported="false" />
-
-        <!-- 📝 Post & Comment Related -->
         <activity
-            android:name="com.example.antisoch.CreatePostActivity"
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false" /> <!-- 📝 Post & Comment Related -->
+        <activity
+            android:name=".CreatePostActivity"
             android:label="Create Post"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name="com.example.antisoch.UserPostsActivity"
+            android:name=".UserPostsActivity"
             android:label="Your Space"
             android:theme="@style/AppTheme" />
-        <activity android:name="com.example.antisoch.EditPostActivity" />
+        <activity android:name=".EditPostActivity" />
         <activity
-            android:name="com.example.antisoch.CommentActivity"
+            android:name=".CommentActivity"
             android:exported="false">
-            <meta-data android:name="android.app.lib_name" android:value="" />
-        </activity>
-        <!-- 🎮 Game Activities -->
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity> <!-- 🎮 Game Activities -->
         <activity
-            android:name="com.example.antisoch.game.backstory"
+            android:name=".game.backstory"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:ignore="DiscouragedApi" />
         <activity
-            android:name="com.example.antisoch.game.CreateProfileActivity"
+            android:name=".game.CreateProfileActivity"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:ignore="DiscouragedApi" />
         <activity
-            android:name="com.example.antisoch.game.SettingsActivity"
+            android:name=".game.SettingsActivity"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:ignore="DiscouragedApi" />
         <activity
-            android:name="com.example.antisoch.game.CharacterSelectActivity"
+            android:name=".game.CharacterSelectActivity"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:ignore="DiscouragedApi" />
         <activity
-            android:name="com.example.antisoch.game.LevelMapActivity"
+            android:name=".game.LevelMapActivity"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:ignore="DiscouragedApi" />
         <activity
-            android:name="com.example.antisoch.game.LevelOneActivity"
+            android:name=".game.LevelOneActivity"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:ignore="DiscouragedApi" />
         <activity
-            android:name="com.example.antisoch.game.MainActivityGame"
+            android:name=".game.MainActivityGame"
             android:exported="true"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"

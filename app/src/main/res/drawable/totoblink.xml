@@ -1,0 +1,11 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item android:drawable="@drawable/teddy_blink_01" android:duration="200" />
+    <item android:drawable="@drawable/teddy_blink_02" android:duration="200" />
+    <item android:drawable="@drawable/teddy_blink_03" android:duration="200" />
+    <item android:drawable="@drawable/teddy_blink_04" android:duration="200" />
+    <item android:drawable="@drawable/teddy_blink_05" android:duration="200" />
+    <item android:drawable="@drawable/teddy_blink_06" android:duration="200" />
+    <item android:drawable="@drawable/teddy_blink_07" android:duration="200" />
+    <item android:drawable="@drawable/teddy_blink_08" android:duration="200" />
+</animation-list>

@@ -35,7 +35,7 @@ ANTI-Soch is a blended ecosystem composed of:
 - Alerts sent to contacts, nearest police, and hospital
 
 ## System Components
-- **Mobile/Web App**: Frontend interface (separated paths for minors and adults)
+- **Mobile App**: Frontend interface (separated paths for minors and adults)
 - **AI Counsellor**: NLP-driven chatbot integrating fallback to professionals
 - **Hardware Device**: Pressure sensor, buffer backup, camera/mic, instant alerting logic
 - **Backend**: Authentication, user profiles, emergency logic, forum system, alert dispatch
@@ -43,15 +43,14 @@ ANTI-Soch is a blended ecosystem composed of:
 
 ## Tech Stack
 *(Replace/expand with actual technologies used)*
-- Frontend: React / React Native / TypeScript
-- Backend: Node.js / Express (or relevant), RESTful APIs
+- Frontend: 
+- Backend: 
 - Authentication: OAuth / JWT
-- Database: MongoDB (Atlas or self-hosted)
-- AI Chatbot: [Model/Service used]
+- Database: MongoDB 
+- AI Chatbot: 
 - Real-time: WebSockets / Push Notifications
-- Hardware Integration: Embedded firmware + API bridge
-- Media Storage: Cloud storage for recordings
-- Deployment: Docker / Cloud provider (e.g., AWS, Vercel, Firebase)
+- Hardware Integration: 
+
 
 
 

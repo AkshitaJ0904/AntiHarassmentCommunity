@@ -56,17 +56,17 @@ ANTI-Soch is a blended ecosystem composed of:
 
 
 
-<img width="500" height="1000" alt="image" src="https://github.com/user-attachments/assets/0de28ec4-cb9f-4ce1-bb0d-1e4ae923fe95" />
+<img width="270" height="600" alt="image" src="https://github.com/user-attachments/assets/0de28ec4-cb9f-4ce1-bb0d-1e4ae923fe95" />
 
-<img width="540" height="1200" alt="image" src="https://github.com/user-attachments/assets/314d950c-9512-4952-82e8-0cf486eac8c2" />
+<img width="270" height="600" alt="image" src="https://github.com/user-attachments/assets/314d950c-9512-4952-82e8-0cf486eac8c2" />
 
-<img width="540" height="1200" alt="image" src="https://github.com/user-attachments/assets/bc00c878-c309-48d8-b41a-1ca471e7e4dc" />
+<img width="270" height="600" alt="image" src="https://github.com/user-attachments/assets/bc00c878-c309-48d8-b41a-1ca471e7e4dc" />
 
-<img width="540" height="1200" alt="image" src="https://github.com/user-attachments/assets/e33c07b7-f5fd-4f05-bf00-f5fef8320c09" />
+<img width="270" height="600" alt="image" src="https://github.com/user-attachments/assets/e33c07b7-f5fd-4f05-bf00-f5fef8320c09" />
 
-<img width="540" height="1200" alt="image" src="https://github.com/user-attachments/assets/6c92fef9-7b39-4fbf-afb7-68d6fe374d86" />
+<img width="270" height="600" alt="image" src="https://github.com/user-attachments/assets/6c92fef9-7b39-4fbf-afb7-68d6fe374d86" />
 
-<img width="540" height="1200" alt="image" src="https://github.com/user-attachments/assets/575daf9b-7b2d-4177-a81e-9d4ad2aeb369" />
+<img width="270" height="600" alt="image" src="https://github.com/user-attachments/assets/575daf9b-7b2d-4177-a81e-9d4ad2aeb369" />
 
 <img width="540" height="1200" alt="image" src="https://github.com/user-attachments/assets/18151e78-a582-4641-9dc4-06b9ebf31223" />
 

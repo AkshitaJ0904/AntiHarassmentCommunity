@@ -56,7 +56,7 @@ ANTI-Soch is a blended ecosystem composed of:
 
 
 
-<img width="540" height="1200" alt="image" src="https://github.com/user-attachments/assets/0de28ec4-cb9f-4ce1-bb0d-1e4ae923fe95" />
+<img width="500" height="1000" alt="image" src="https://github.com/user-attachments/assets/0de28ec4-cb9f-4ce1-bb0d-1e4ae923fe95" />
 
 <img width="540" height="1200" alt="image" src="https://github.com/user-attachments/assets/314d950c-9512-4952-82e8-0cf486eac8c2" />
 
